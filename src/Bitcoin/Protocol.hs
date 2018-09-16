@@ -78,24 +78,6 @@ createMessageHeader message =
 readHex :: ByteString -> ByteString
 readHex = either error id . convertFromBase Base16
 
-first = do
-  host <- hostAddress <$> getHostByName "testnet-seed.bitcoin.jonasschnelli.ch" -- Fallback Node
-  sock <- socket AF_INET Stream defaultProtocol
-connect sock (SockAddrInet 18333 host)
-
-  -- versionを送る
-  unixtime <- getPOSIXTime
-  let ip = readHex $ BS.concat ["00000000", "00000000", "0000FFFF", "7F000001"] -- 127.0.0.1
-  addr = NetAddr 1 (toChars ip) 8333
-  userAgent = VarStr 0 BS.empty
-  version = Version 70015 1 (round unixtime) addr addr 0 userAgent 0 False
-  sendMessage sock version
-
-  -- versionを受け取ってverackを送り返す
-  version <- handshake sock Nothing False
-  pure (sock, version)
-
-
 -- | Bitcoinネットワークに繋げてハンドシェイクを行う
 withBitcoinConnection :: ((Socket, Version) -> IO a) -> IO a
 withBitcoinConnection between = bracket first (close . fst) between

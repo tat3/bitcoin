@@ -8,6 +8,7 @@ import Control.Monad (forever)
 
 main :: IO ()
 main = withBitcoinConnection $ \(sock, _) -> do
+  -- return ()
   forever $ dispatch sock =<< recvMessageHeader sock
     where
       dispatch sock (name, size) =
