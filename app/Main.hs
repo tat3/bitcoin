@@ -5,6 +5,7 @@ module Main where
 import System.Environment (getArgs)
 
 import Wallet (showWallet)
+import Send (sendBitcoin)
 
 main :: IO ()
 main = do
@@ -13,3 +14,4 @@ main = do
     then putStrLn "Please give subcommand wallet/send/balance."
     else case head args of
       "wallet" -> showWallet
+      "send"   -> sendBitcoin

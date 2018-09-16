@@ -42,7 +42,7 @@ encodeBitcoinAddress pubKey =
       checksum = BS.take 4 . hash256 $ xs
   in encodeBase58 bitcoinAlphabet $ BS.concat [xs, checksum]
 
--- | addressからHash160後の公開鍵を取得する
+-- | addressから元の文字列を取得する
 decodeAddress :: ByteString -> Maybe ByteString
 decodeAddress address =
   case decodeBase58 bitcoinAlphabet address of
