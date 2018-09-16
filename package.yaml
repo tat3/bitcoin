@@ -33,6 +33,7 @@ dependencies:
 - network
 - time
 - vector-sized 
+- secp256k1 # -haskell
 
 library:
   source-dirs: src
@@ -58,7 +59,6 @@ executables:
     - cryptonite
     - stm
     - base58-bytestring
-    - secp256k1 # -haskell
 tests:
   bitcoin-test:
     main:                Spec.hs
