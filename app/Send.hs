@@ -29,7 +29,7 @@ import qualified Bitcoin.Protocol.Inv as Inv
 -- import Bitcoin.Protocol.Mempool (Mempool(..))
 import Bitcoin.Protocol.GetData (GetData(..))
 import qualified Bitcoin.Protocol.GetData as GetData
--- import Bitcoin.Protocol.GetBlocks (GetBlocks(..), zeroHash)
+import Bitcoin.Protocol.GetBlocks (GetBlocks(..), zeroHash)
 -- import Bitcoin.Protocol.Reject (Reject(..))
 import Bitcoin.Protocol.Tx (Tx(..), TxOut(..), TxIn(..), OutPoint(..))
 import qualified Bitcoin.Protocol.Tx as Tx
